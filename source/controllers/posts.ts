@@ -3,12 +3,6 @@ import { Request, Response, NextFunction } from 'express';
 import axios, { AxiosResponse } from 'axios';
 import {CosmWasmClient} from '@cosmjs/cosmwasm-stargate';
 import config from '../config.json'
-interface Post {
-    userId: Number;
-    id: Number;
-    title: String;
-    body: String;
-}
 
 // Takes as input a JSON message and returns a query response
 const queryContract = async (req: Request, res: Response, next: NextFunction) => {
