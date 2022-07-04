@@ -1,3 +1,4 @@
 {
-    "RPC_ENDPOINT": "https://rpc.uni.junonetwork.io/"
+    "RPC_ENDPOINT": "https://rpc.uni.junonetwork.io/",
+    "PREFIX": "juno"
 }
