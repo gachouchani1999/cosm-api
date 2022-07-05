@@ -41,7 +41,8 @@ var JsonToArray = function (json: Record<string, any>) {
 /** Takes as input a certain transaction and calculates the required fee */
 const simulateFee = async (req: Request, res: Response, next: NextFunction) => {
     // Random Wallet
-    let wallet = await DirectSecp256k1HdWallet.fromMnemonic("aunt forest doll into woman apology bottom lift prosper sport absent copper civil vast large limit tired cupboard waste artwork surge rack observe guide", {prefix: "juno"});
+
+    let wallet = await DirectSecp256k1HdWallet.fromMnemonic(config.MNEMONIC, {prefix: config.PREFIX});
     // Initiate a Cosmwasm Client
     let client: SigningCosmWasmClient = await SigningCosmWasmClient.connectWithSigner(config.RPC_ENDPOINT, wallet);
     let address = req.params.address;
