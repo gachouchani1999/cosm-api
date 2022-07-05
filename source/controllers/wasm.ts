@@ -25,7 +25,7 @@ const queryContract = async (req: Request, res: Response, next: NextFunction) =>
     // query smart contract using reading client
     let resp = await client.queryContractSmart(address,json_msg);
     return res.status(200).json({
-        message: resp
+        resp
     });
 };
 
@@ -41,7 +41,8 @@ var JsonToArray = function (json: Record<string, any>) {
 /** Takes as input a certain transaction and calculates the required fee */
 const simulateFee = async (req: Request, res: Response, next: NextFunction) => {
     // Random Wallet
-    let wallet = await DirectSecp256k1HdWallet.fromMnemonic("aunt forest doll into woman apology bottom lift prosper sport absent copper civil vast large limit tired cupboard waste artwork surge rack observe guide", {prefix: "juno"});
+
+    let wallet = await DirectSecp256k1HdWallet.fromMnemonic(config.MNEMONIC, {prefix: config.PREFIX});
     // Initiate a Cosmwasm Client
     let client: SigningCosmWasmClient = await SigningCosmWasmClient.connectWithSigner(config.RPC_ENDPOINT, wallet);
     let address = req.params.address;
@@ -57,13 +58,13 @@ const simulateFee = async (req: Request, res: Response, next: NextFunction) => {
             sender: signer_address[0].address,
             contract: address,
             msg: JsonToArray(json_msg),
-            funds: [coin("10000","ujunox")]
+            funds: [coin("10000",config.DENOM)]
          }
     };
 
     let resp = await client.simulate(signer_address[0].address,[encoded_msg], "");
     return res.status(200).json({
-        message: resp
+        resp
     });
 };
 

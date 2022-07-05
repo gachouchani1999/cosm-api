@@ -1,4 +1,6 @@
 {
     "RPC_ENDPOINT": "https://rpc.uni.junonetwork.io/",
-    "PREFIX": "juno"
+    "PREFIX": "juno",
+    "DENOM": "ujunox",
+    "MNEMONIC": "aunt forest doll into woman apology bottom lift prosper sport absent copper civil vast large limit tired cupboard waste artwork surge rack observe guide"
 }
