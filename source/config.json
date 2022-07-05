@@ -1,4 +1,5 @@
 {
     "RPC_ENDPOINT": "https://rpc.uni.junonetwork.io/",
-    "PREFIX": "juno"
+    "PREFIX": "juno",
+    "DENOM": "ujunox"
 }

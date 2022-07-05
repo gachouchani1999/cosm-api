@@ -25,7 +25,7 @@ const queryContract = async (req: Request, res: Response, next: NextFunction) =>
     // query smart contract using reading client
     let resp = await client.queryContractSmart(address,json_msg);
     return res.status(200).json({
-        message: resp
+        resp
     });
 };
 
@@ -57,13 +57,13 @@ const simulateFee = async (req: Request, res: Response, next: NextFunction) => {
             sender: signer_address[0].address,
             contract: address,
             msg: JsonToArray(json_msg),
-            funds: [coin("10000","ujunox")]
+            funds: [coin("10000",config.DENOM)]
          }
     };
 
     let resp = await client.simulate(signer_address[0].address,[encoded_msg], "");
     return res.status(200).json({
-        message: resp
+        resp
     });
 };
 
